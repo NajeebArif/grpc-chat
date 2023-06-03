@@ -1,0 +1,30 @@
+
+syntax="proto3";
+
+option java_multiple_files=true;
+option java_package="narif.poc.grpccchat";
+
+import "google/protobuf/empty.proto";
+
+package narif.poc.grpcChat;
+
+message ChatMessage{
+  string id=1;
+  string senderUserId=2;
+  string msg=3;
+  int64 timestamp=4;
+  bool isRead=5;
+  string recipientUserId=6;
+}
+
+message User{
+  string userId=1;
+  string userName=2;
+}
+
+service ChatService{
+  rpc SendMessageOffline(ChatMessage) returns (google.protobuf.Empty);
+  rpc GetMessageOffline(User) returns (google.protobuf.Empty);
+  rpc MarkAsRead(ChatMessage) returns (google.protobuf.Empty);
+  rpc Chat(stream ChatMessage) returns (stream ChatMessage);
+}
