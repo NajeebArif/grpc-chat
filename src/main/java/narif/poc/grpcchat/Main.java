@@ -1,4 +1,4 @@
-package narif.poc.grpc-chat;
+package narif.poc.grpcchat;
 
 public class Main {
     public static void main(String[] args) {
